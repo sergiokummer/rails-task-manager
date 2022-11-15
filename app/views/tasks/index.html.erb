@@ -1,0 +1,20 @@
+<div class="container">
+<h1>Tasks</h1>
+<div class="">
+  <% @tasks.each do |task| %>
+  <div class="d-flex">
+    <%if task.completed == true %>
+      <p class=""><i class="fa-solid fa-square-check"><%=link_to task.title, task_path(task) %></i></p>
+
+    <%else%>
+      <p class=""><i class="fa-regular fa-square"><%=link_to task.title, task_path(task) %></i></p>
+
+    <%end%>
+    <%= link_to task_path(task), data: {turbo_method: :delete, turbo_confirm: "Are sure you?"} do%>
+      <i class="fa-regular fa-trash-can m-1"></i>
+    <%end%>
+  </div>
+  <% end %>
+</div>
+  <%= link_to "Add a Task", tasks_new_path %>
+</div>
